@@ -458,9 +458,11 @@
         children;
 
     while (i--) {
-      value ? elements[i].style.touchAction = value : elements[i].style.removeProperty("touch-action");
-      children = elements[i].children;
-      children && children.length && _setTouchActionForAllDescendants(children, value);
+      if(elements[i].style){
+				value ? (elements[i].style.touchAction = value) : elements[i].style.removeProperty("touch-action");
+				children = elements[i].children;
+				children && children.length && _setTouchActionForAllDescendants(children, value);
+			}
     }
   },
       _renderQueueTick = function _renderQueueTick() {
